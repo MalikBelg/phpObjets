@@ -6,19 +6,20 @@ class Personnage {
     private $force;
     private $niveau;
     private $sante;
-    private $etat;
+    private $mort;
 
 
     function caracteristiques() {
-       echo " [ " . $this->nom . " :" . " Force: " . $this->force . "; Niveau: " . $this->niveau . "; Santé: " . 
-       $this->sante . "; Etat: " . $this->etat . " ] ";
+       $etat = ($this->mort)? "mort" : "vie";
+        echo " [ " . $this->nom . " :" . " Force: " . $this->force . "; Niveau: " . $this->niveau . "; Santé: " . 
+       $this->sante . "; Etat: " . $this->mort . " ] ";
     }
 
     function setNom(string $nomperso) {
         $this->nom = $nomperso;
     }
 
-    function getNom() {
+    function getNom() : string {
         return $this->nom;
     }
 
@@ -30,14 +31,35 @@ class Personnage {
         $this->niveau = $niv;
     }
 
-    function setSante(int $vie) {
+    function setSante(int $vie)  {
         $this->sante = $vie;
-    }
-    
-    function setEtat(string $etatperso) {
-        $this->etat = $etatperso;
 
     }
+    
+    function setMort(bool $mortperso) {
+        $this->mort = $mortperso;
+
+    }
+
+    function getNiveau(): ?int {
+        return $this->niveau;
+    }
+
+    function getSante(): ?int {
+        return $this->sante;
+    }
+
+    function isMort() ?bool {  
+        return $this->mort;
+    }
+
+
+    // function attaquer() {
+
+    //     if () {
+            
+    //     }
+    // }
 
 
     
