@@ -7,8 +7,16 @@ class Personnage {
     private $niveau;
     private $sante;
     private $mort;
-    private $attaque;
+ 
    
+
+    function __construct($nom, $force, $niveau = 1, $sante = 100){
+        $this->nom = $nom;
+        $this->force = $force;
+        $this->niveau = $niveau;
+        $this->sante = $sante;
+        $this->mort = false;
+    }
 
 
     function caracteristiques() {
@@ -16,8 +24,6 @@ class Personnage {
        echo " [ " . $this->nom . " :" . " Force: " . $this->force . "; Niveau: " . $this->niveau . "; Santé: " . 
        $this->sante . "; Etat: " . $etat . " ] </br>";
        
-    //    $degats = ($this->attaque)? "nul" : rand(5, 15);
-    //    echo "Vous avez fait " . $degats . " de dégats </br>";
     }
 
     function setNom(string $nomperso) {
@@ -73,11 +79,9 @@ class Personnage {
     }
 
     function levelUp(Personnage $personnage) {
-        $this->niveau += 1;
+        $this->niveau++;
         echo $this->nom . " est niveau " . $personnage->getNiveau() . " </br>"; 
     }
-
-
 
     
 
