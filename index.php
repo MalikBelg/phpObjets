@@ -10,6 +10,7 @@ $perso1->setNiveau("3");
 $perso1->setSante("25");
 $perso1->setMort(false);
 
+
 $perso2 = new Personnage();
 $perso2->setNom("Golbu");
 $perso2->setForce("15");
@@ -23,6 +24,7 @@ $perso3->setForce("13");
 $perso3->setNiveau("2");
 $perso3->setSante("15");
 $perso3->setMort(false);
+
 var_dump($perso1);
 
 
@@ -30,11 +32,24 @@ $perso1->caracteristiques();
 $perso2->caracteristiques();
 $perso3->caracteristiques();
 
+$perso1->attaquer($perso2);
 
+$perso1->caracteristiques();
+$perso2->caracteristiques();
 
+$perso1->attaquer($perso2);
 
+$perso1->caracteristiques();
+$perso2->caracteristiques();
 
+$perso1->attaquer($perso2);
 
+$perso1->caracteristiques();
+$perso2->caracteristiques();
+$perso1->levelUp($perso1);
 
 
 ?>
+
+
+
