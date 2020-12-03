@@ -1,6 +1,6 @@
 <?php
 
-class Personnage {
+abstract class Personnage {
 
     protected $nom;
     protected $force;
@@ -75,6 +75,10 @@ class Personnage {
 
 
 
+    abstract function attaquer(Personnage $personnage);
+
+
+    
     function subirDegats(int $degats) {
         $this->sante -= $degats;
         if($this->sante <=0) {
@@ -83,10 +87,9 @@ class Personnage {
     }
 
     
-    
     function levelUp() {
         $this->niveau++;
-        $this->force += rand(3, 5);
+        $this->force += rand(5, 10);
         echo $this->nom . " passe niveau " . $this->niveau . " ! " . "Sa force passe à " 
         . $this->force . " ! </br>";
         
