@@ -1,94 +1,19 @@
 <?php
 
-class Guerrier {
-
-    private $nom;
-    private $force;
-    private $niveau;
-    private $sante;
-    private $mort;
- 
-   
-
-    function __construct($nom, $force, $niveau = 1, $sante = 100){
-        $this->nom = $nom;
-        $this->force = $force;
-        $this->niveau = $niveau;
-        $this->sante = $sante;
-        $this->mort = false;
+class Guerrier extends Personnage {
+    function __construct($nom, $force, $niveau, $sante){
+        parent::__construct($nom, $force, $niveau, $sante);
     }
 
-
-    function caracteristiques() {
-       $etat = ($this->mort)? "mort" : "vie";
-       echo " [ " . $this->nom . " :" . " Force: " . $this->force . "; Niveau: " . $this->niveau . "; Santé: " . 
-       $this->sante . "; Etat: " . $etat . " ] </br>";
-       
-    }
-
-    function setNom(string $nomperso) {
-        $this->nom = $nomperso;
-    }
-
-    function getNom() : string {
-        return $this->nom;
-    }
-
-    function setForce(int $for) {
-        $this->force = $for;
-        return true;
-    }
-
-    function setNiveau(int $niv) {
-        $this->niveau = $niv;
-    }
- 
-    function getNiveau(): ?int {
-        return $this->niveau;
-    }
- 
-    function setSante(int $vie)  {
-        $this->sante = $vie;
-
-    }
-
-    function getSante(): ?int {
-        return $this->sante;
-    }    
- 
-    function setMort(bool $mortperso) {
-        $this->mort = $mortperso;
-
-    }
- 
-    function isMort(): ?bool {  
-        return $this->mort;
-    }
-
-    function attaquer(Guerrier $personnage){
+    function attaquer(Personnage $personnage){
         
         $this->frapper($personnage);
     }
 
     function frapper($perso) {
         echo $this->nom . " frappe " . $perso->getNom() . "</br>";
-        $perso->subirDegats($this->force);
+        $perso->subirDegats(rand(8, 14));
     }
-    
-    function subirDegats(int $degats) {
-        $this->sante -= $degats;
-        if($this->sante <=0) {
-            $this->mort = true;
-        }
-    }
-
-    function levelUp(Guerrier $personnage) {
-        $this->niveau++;
-        echo $this->nom . " est niveau " . $personnage->getNiveau() . " </br>"; 
-    }
-
-    
-
 }
-// Aucun code en dehors !
+
 ?>
