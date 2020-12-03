@@ -100,7 +100,7 @@ class Guerrier extends Personnage {
         parent::__construct($nom, $force, $niveau, $sante);
     }
 
-    function attaquer(Magicien $personnage){
+    function attaquer(Personnage $personnage){
         
         $this->frapper($personnage);
     }
@@ -116,7 +116,7 @@ class Magicien extends Personnage {
         parent::__construct($nom, $force, $niveau, $sante);
     }
 
-    function attaquer(Guerrier $personnage){
+    function attaquer(Personnage $personnage){
         
         $this->lancerSort($personnage);
     }
