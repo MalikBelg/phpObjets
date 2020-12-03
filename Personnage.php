@@ -2,20 +2,20 @@
 
 class Personnage {
 
-    private $nom;
-    private $force;
-    private $niveau;
-    private $sante;
-    private $mort;
+    protected $nom;
+    protected $force;
+    protected $niveau;
+    protected $sante;
+    protected $mort;
  
    
 
-    function __construct($nom, $force, $niveau = 1, $sante = 100){
+    function __construct($nom, $force, $niveau, $sante){
         $this->nom = $nom;
         $this->force = $force;
         $this->niveau = $niveau;
         $this->sante = $sante;
-        $this->mort = false;
+        $this->mort = false;        
     }
 
 
@@ -65,12 +65,6 @@ class Personnage {
         return $this->mort;
     }
 
-    function attaquer(Personnage $personnage){
-
-        echo $this->nom . " attaque " . $personnage->getNom() . "</br>";
-        $personnage->subirDegats($this->force);
-    }
-
     function subirDegats(int $degats) {
         $this->sante -= $degats;
         if($this->sante <=0) {
@@ -78,13 +72,62 @@ class Personnage {
         }
     }
 
-    function levelUp(Personnage $personnage) {
-        $this->niveau++;
-        echo $this->nom . " est niveau " . $personnage->getNiveau() . " </br>"; 
+    function levelUp() {
+        $this->niveau++; 
     }
 
-    
+}
+
+class Archer extends Personnage {
+    function __construct($nom, $force, $niveau, $sante){
+        parent::__construct($nom, $force, $niveau, $sante);
+    }
+
+    function attaquer(Personnage $personnage){
+        
+        $this->tirer($personnage);
+    }
+
+    function tirer($perso) {
+        echo $this->nom . " tire une flèche sur " . $perso->getNom() . "</br>";
+        $perso->subirDegats($this->force);
+    }
 
 }
+
+class Guerrier extends Personnage {
+    function __construct($nom, $force, $niveau, $sante){
+        parent::__construct($nom, $force, $niveau, $sante);
+    }
+
+    function attaquer(Magicien $personnage){
+        
+        $this->frapper($personnage);
+    }
+
+    function frapper($perso) {
+        echo $this->nom . " frappe " . $perso->getNom() . "</br>";
+        $perso->subirDegats($this->force);
+    }
+}
+
+class Magicien extends Personnage {
+    function __construct($nom, $force, $niveau, $sante){
+        parent::__construct($nom, $force, $niveau, $sante);
+    }
+
+    function attaquer(Guerrier $personnage){
+        
+        $this->lancerSort($personnage);
+    }
+
+    function lancerSort($perso) {
+        echo $this->nom . " lance un sort sur " . $perso->getNom() . "</br>";
+        $perso->subirDegats($this->force);
+    }
+
+}
+
+
 // Aucun code en dehors !
 ?>
