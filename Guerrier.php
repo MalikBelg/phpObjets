@@ -17,6 +17,8 @@ class Guerrier extends Personnage {
             $perso->subirDegats(16);
         } elseif($perso instanceof Magicien){
             $perso->subirDegats(22);
+        } elseif ($perso instanceof Guerrier){
+            $perso->subirDegats(10);
         }
         
     }
