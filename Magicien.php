@@ -5,7 +5,7 @@
             parent::__construct($nom, $force, $niveau, $sante);
         }
 
-        function attaquer(Personnage $personnage){
+        function attaquer(Cible $personnage){
             
             $this->lancerSort($personnage);
         }

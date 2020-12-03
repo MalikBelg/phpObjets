@@ -1,6 +1,6 @@
 <?php
 
-abstract class Personnage {
+abstract class Personnage implements Attaquant, Cible {
 
     protected $nom;
     protected $force;
@@ -75,10 +75,10 @@ abstract class Personnage {
 
 
 
-    abstract function attaquer(Personnage $personnage);
+    abstract function attaquer(Cible $personnage);
 
 
-    
+
     function subirDegats(int $degats) {
         $this->sante -= $degats;
         if($this->sante <=0) {

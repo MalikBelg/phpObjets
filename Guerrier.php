@@ -5,7 +5,7 @@
             parent::__construct($nom, $force, $niveau, $sante);
         }
 
-        function attaquer(Personnage $personnage){
+        function attaquer(Cible $personnage){
             
             $this->frapper($personnage);
         }
@@ -19,7 +19,9 @@
                 $perso->subirDegats($this->force + 14);
             } elseif ($perso instanceof Guerrier){
                 $perso->subirDegats($this->force + 6);
-            }
+            } elseif ($perso instanceof Creature){
+                $perso->subirDegats($this->force + 15);
+            } 
             
         }
 }
