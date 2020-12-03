@@ -17,6 +17,8 @@ class Archer extends Personnage {
             $perso->subirDegats(12);
         } elseif ($perso instanceof Magicien){
             $perso->subirDegats(20);
+        } elseif ($perso instanceof Archer){
+            $perso->subirDegats(8);
         }
     }
 }
