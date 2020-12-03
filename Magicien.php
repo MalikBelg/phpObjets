@@ -19,7 +19,9 @@
                 $perso->subirDegats($this->force + 25);
             } elseif ($perso instanceof Magicien){
                 $perso->subirDegats($this->force + 5); 
-            }
+            }  elseif ($perso instanceof Creature){
+                $perso->subirDegats($this->force + 15);
+            } 
             
         }
 
