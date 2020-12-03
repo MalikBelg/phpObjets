@@ -1,27 +1,27 @@
 <?php
 
-class Guerrier extends Personnage {
-    function __construct($nom, $force, $niveau, $sante){
-        parent::__construct($nom, $force, $niveau, $sante);
-    }
-
-    function attaquer(Personnage $personnage){
-        
-        $this->frapper($personnage);
-    }
-
-    function frapper($perso) {
-        echo $this->nom . " frappe " . $perso->getNom() . "</br>";
-        
-        if($perso instanceof Archer){
-            $perso->subirDegats(16);
-        } elseif($perso instanceof Magicien){
-            $perso->subirDegats(22);
-        } elseif ($perso instanceof Guerrier){
-            $perso->subirDegats(10);
+    class Guerrier extends Personnage {
+        function __construct($nom, $force, $niveau, $sante){
+            parent::__construct($nom, $force, $niveau, $sante);
         }
-        
-    }
+
+        function attaquer(Personnage $personnage){
+            
+            $this->frapper($personnage);
+        }
+
+        function frapper($perso) {
+            echo $this->nom . " frappe " . $perso->getNom() . "</br>";
+            
+            if($perso instanceof Archer){
+                $perso->subirDegats($this->force + 10);
+            } elseif($perso instanceof Magicien){
+                $perso->subirDegats($this->force + 14);
+            } elseif ($perso instanceof Guerrier){
+                $perso->subirDegats($this->force + 6);
+            }
+            
+        }
 }
 
 ?>
