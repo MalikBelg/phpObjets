@@ -12,7 +12,12 @@ class Archer extends Personnage {
 
     function tirer($perso) {
         echo $this->nom . " tire une flèche sur " . $perso->getNom() . "</br>";
-        $perso->subirDegats(rand(5, 10));
+        
+        if($perso instanceof Guerrier){
+            $perso->subirDegats(12);
+        } elseif ($perso instanceof Magicien){
+            $perso->subirDegats(20);
+        }
     }
 }
     ?>

@@ -12,7 +12,13 @@ class Magicien extends Personnage {
 
     function lancerSort($perso) {
         echo $this->nom . " lance un sort sur " . $perso->getNom() . "</br>";
-        $perso->subirDegats(rand(10, 20));
+        
+        if($perso instanceof Archer){
+           $perso->subirDegats(20);  
+        } elseif($perso instanceof Guerrier){
+            $perso->subirDegats(25);
+        }
+        
     }
 
 }

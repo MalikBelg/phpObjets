@@ -12,7 +12,13 @@ class Guerrier extends Personnage {
 
     function frapper($perso) {
         echo $this->nom . " frappe " . $perso->getNom() . "</br>";
-        $perso->subirDegats(rand(8, 14));
+        
+        if($perso instanceof Archer){
+            $perso->subirDegats(16);
+        } elseif($perso instanceof Magicien){
+            $perso->subirDegats(22);
+        }
+        
     }
 }
 
