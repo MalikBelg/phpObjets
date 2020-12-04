@@ -11,7 +11,7 @@
         }
 
         function frapper($perso) {
-            echo $this->nom . " frappe " . $perso->getNom() . "</br>";
+            echo $this->nom . " frappe " . $perso->getNom() . " ! </br>";
             
             if($perso instanceof Archer){
                 $perso->subirDegats($this->force + 10);

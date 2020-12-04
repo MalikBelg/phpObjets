@@ -27,8 +27,8 @@ class Creature implements Attaquant, Cible {
     }
 
     function attaquer(Cible $perso){
-        $perso->subirDegats(20);
-        echo $this->race . " attaque ! </br>";
+        $perso->subirDegats(rand(10, 20));
+        echo $this->race . " attaque " . $perso->getNom() . " ! </br>";
     } 
 
     function subirDegats(int $degats){
@@ -38,6 +38,15 @@ class Creature implements Attaquant, Cible {
         }
     }
 
+
+    function setMort(bool $mortperso) {
+        $this->mort = $mortperso;
+
+    }
+ 
+    function isMort(): ?bool {  
+        return $this->mort;
+    }
 }
 
 ?>
